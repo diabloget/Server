@@ -14,16 +14,10 @@ import javafx.scene.input.KeyCode;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
-
-// Java implementation of Server side
-// It contains two classes : Server and ClientHandler
-// Save file as Server.java
-
 import java.io.*;
 import java.util.*;
 import java.net.*;
 
-// Server class
 public class Server
 {
 
@@ -51,6 +45,10 @@ public class Server
             DataInputStream dis = new DataInputStream(socket.getInputStream());
             DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
 
+            //
+            dos.writeUTF(Integer.toString(socket.getPort()));
+            System.out.println(socket.getPort() + "Este es el puerto que se le devolvió al cliente");
+
             System.out.println("Creating a new handler for this client...");
 
             // Create a new handler object for handling this request.
@@ -66,10 +64,6 @@ public class Server
 
             // start the thread.
             t.start();
-
-            // increment i for new client.
-            // i is used for naming only, and can be replaced
-            // by any naming scheme
 
         }
     }
