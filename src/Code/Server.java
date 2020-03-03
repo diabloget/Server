@@ -1,18 +1,6 @@
 package Code;
 
-import javafx.application.Application;
-import javafx.geometry.Orientation;
-import javafx.scene.Scene;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToolBar;
-import javafx.scene.image.Image;
-import javafx.scene.input.KeyCode;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
-import javafx.stage.Stage;
-import javafx.scene.input.KeyCode;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.io.*;
 import java.util.*;
@@ -31,8 +19,9 @@ public class Server
 
         Socket socket;
 
-        // running infinite loop for getting
-        // client request
+        /**
+         * running infinite loop for getting client request and messages
+         */
         while (true)
         {
             // Accept the incoming request
@@ -47,7 +36,7 @@ public class Server
 
             //
             dos.writeUTF(Integer.toString(socket.getPort()));
-            System.out.println(socket.getPort() + "Este es el puerto que se le devolvió al cliente");
+            System.out.println(socket.getPort() + "Este es el puerto que se le devolvió al cliente ");
 
             System.out.println("Creating a new handler for this client...");
 
@@ -72,7 +61,6 @@ public class Server
 // ClientHandler class
 class ClientHandler implements Runnable
 {
-    Scanner scanner = new Scanner(System.in);
     private String name;
     final DataInputStream dis;
     final DataOutputStream dos;
